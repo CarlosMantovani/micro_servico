@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/alunos")
 public class AlunoController {
 
-    @Autowired
-    private AlunoService alunoService;
+    private final AlunoService alunoService;
 
     @PostMapping
     public ResponseEntity<Aluno> cadastrarAluno(@RequestBody Aluno aluno) {

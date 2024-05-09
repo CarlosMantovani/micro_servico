@@ -1,15 +1,19 @@
-package com.crusaders.demodesafio.aluno.web.dto;
+    package com.crusaders.demodesafio.aluno.web.dto;
 
-import lombok.NonNull;
+    import lombok.*;
 
-import java.util.Date;
-
-public class AlunoCreateDto {
-    @NonNull
-    private String nome;
-    @NonNull
-    private String cpf;
-    @NonNull
-    private Date dataNascimento;
-    private String professor;
-}
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @ToString
+    public class AlunoCreateDto {
+        @NonNull
+        private String nome;
+        @NonNull
+        private String cpf;
+        @NonNull
+        private String dataNascimento;
+        @NonNull
+        private String sexo;
+    }
