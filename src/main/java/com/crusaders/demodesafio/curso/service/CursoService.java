@@ -34,4 +34,10 @@ public class CursoService {
         curso.setStatus(status);
         return cursoRepository.save(curso);
     }
+
+    public Curso editarProfessor (Long id, String nomeProfessor) {
+        Curso curso = buscarPorId(id);
+        curso.setProfessor(nomeProfessor);
+        return cursoRepository.save(curso);
+    }
 }
