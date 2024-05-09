@@ -2,6 +2,7 @@ package com.crusaders.demodesafio.curso.web.controller;
 
 import com.crusaders.demodesafio.curso.entidade.Curso;
 import com.crusaders.demodesafio.curso.service.CursoService;
+import com.crusaders.demodesafio.curso.web.dto.CursoProfessorDto;
 import com.crusaders.demodesafio.curso.web.dto.CursoResponseDto;
 import com.crusaders.demodesafio.curso.web.dto.mapper.CursoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class CursoController {
     @PatchMapping("/{id}/status")
     public ResponseEntity<CursoResponseDto> alterarStatusCurso(@PathVariable Long id, @RequestBody CursoResponseDto cursoResponseDto) {
         Curso curso = cursoService.alterarStatusCurso(id, cursoResponseDto.getStatus());
+        return ResponseEntity.ok(CursoMapper.toDto(curso));
+    }
+
+    @PatchMapping("/{id}/professor")
+    public ResponseEntity<CursoResponseDto> editarProfessor(@PathVariable Long id, @RequestBody CursoProfessorDto cursoProfessorDto) {
+        Curso curso = cursoService.editarProfessor(id, cursoProfessorDto.getNomeProfessor());
         return ResponseEntity.ok(CursoMapper.toDto(curso));
     }
 }
