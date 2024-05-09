@@ -1,5 +1,6 @@
 package com.crusaders.demodesafio.aluno.entities;
 
+import com.crusaders.demodesafio.Enum.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,10 @@ public class Aluno implements Serializable {
 
     @Column(name = "sexo", nullable = false, length = 15)
     private String sexo;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 25)
+    private Status status = Status.ATIVO;
 
     @Override
     public boolean equals(Object o) {
