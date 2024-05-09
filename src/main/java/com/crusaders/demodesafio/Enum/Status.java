@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.curso.entidade.Enum;
+package com.crusaders.demodesafio.Enum;
 
 public enum Status {
     ATIVO(1), INATIVO(2);
