@@ -8,9 +8,6 @@ import lombok.*;
 
     @Getter
     @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @ToString
     public class CursoResponseDto {
         private Long id;
         private String nome;
