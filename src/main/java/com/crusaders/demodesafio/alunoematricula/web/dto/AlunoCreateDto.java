@@ -1,6 +1,5 @@
-package com.crusaders.demodesafio.aluno.web.dto;
+package com.crusaders.demodesafio.alunoematricula.web.dto;
 
-import com.crusaders.demodesafio.Enum.Status;
 import lombok.*;
 
 @Getter
@@ -8,11 +7,13 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class AlunoResponseDto {
-    private Long id;
+public class AlunoCreateDto {
+    @NonNull
     private String nome;
+    @NonNull
     private String cpf;
+    @NonNull
     private String dataNascimento;
+    @NonNull
     private String sexo;
-    private Status status;
 }

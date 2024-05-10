@@ -1,9 +1,9 @@
-package com.crusaders.demodesafio.aluno.web.controller;
+package com.crusaders.demodesafio.alunoematricula.web.controller;
 
-import com.crusaders.demodesafio.aluno.entities.Aluno;
-import com.crusaders.demodesafio.aluno.services.AlunoService;
-import com.crusaders.demodesafio.aluno.web.dto.AlunoResponseDto;
-import com.crusaders.demodesafio.aluno.web.dto.mapper.AlunoMapper;
+import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
+import com.crusaders.demodesafio.alunoematricula.services.AlunoService;
+import com.crusaders.demodesafio.alunoematricula.web.dto.AlunoResponseDto;
+import com.crusaders.demodesafio.alunoematricula.web.dto.mapper.AlunoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +33,7 @@ public class AlunoController {
         Aluno aluno = alunoService.buscarPorId(id);
         return ResponseEntity.ok(AlunoMapper.toDto(aluno));
     }
+
     @PatchMapping("/{id}/aluno")
     public ResponseEntity<AlunoResponseDto> alterarStatusAluno(@PathVariable Long id, @RequestBody AlunoResponseDto alunoResponseDto) {
         Aluno aluno = alunoService.alterarStatusAluno(id, alunoResponseDto.getStatus());

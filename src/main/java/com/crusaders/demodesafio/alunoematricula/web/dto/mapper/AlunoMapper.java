@@ -1,7 +1,7 @@
-package com.crusaders.demodesafio.aluno.web.dto.mapper;
+package com.crusaders.demodesafio.alunoematricula.web.dto.mapper;
 
-import com.crusaders.demodesafio.aluno.entities.Aluno;
-import com.crusaders.demodesafio.aluno.web.dto.AlunoResponseDto;
+import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
+import com.crusaders.demodesafio.alunoematricula.web.dto.AlunoResponseDto;
 import org.modelmapper.ModelMapper;
 
 public class AlunoMapper {

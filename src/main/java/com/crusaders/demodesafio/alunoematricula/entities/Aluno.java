@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.aluno.entities;
+package com.crusaders.demodesafio.alunoematricula.entities;
 
 import com.crusaders.demodesafio.Enum.Status;
 import jakarta.persistence.*;
@@ -7,7 +7,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "alunos")
 public class Aluno implements Serializable {

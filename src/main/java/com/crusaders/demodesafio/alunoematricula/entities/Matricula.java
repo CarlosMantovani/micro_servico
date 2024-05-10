@@ -1,4 +1,5 @@
 package com.crusaders.demodesafio.alunoematricula.entities;
+
 import com.crusaders.demodesafio.Enum.Status;
 import com.crusaders.demodesafio.curso.entidade.Curso;
 import jakarta.persistence.*;
@@ -6,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Getter
