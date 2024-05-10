@@ -1,9 +1,10 @@
 package com.crusaders.demodesafio.alunoematricula.web.controller;
+import com.crusaders.demodesafio.aluno.entities.Aluno;
+import com.crusaders.demodesafio.aluno.services.AlunoService;
 import com.crusaders.demodesafio.alunoematricula.entities.Matricula;
 import com.crusaders.demodesafio.alunoematricula.services.MatriculaService;
 import com.crusaders.demodesafio.alunoematricula.web.dto.MatriculaRequestDto;
 import com.crusaders.demodesafio.alunoematricula.web.dto.MatriculaResponseDto;
-
 import com.crusaders.demodesafio.curso.entidade.Curso;
 import com.crusaders.demodesafio.curso.service.CursoService;
 import com.crusaders.demodesafio.curso.web.dto.mapper.CursoMapper;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
