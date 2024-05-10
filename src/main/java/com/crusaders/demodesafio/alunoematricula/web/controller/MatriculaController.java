@@ -1,10 +1,12 @@
 package com.crusaders.demodesafio.alunoematricula.web.controller;
-import com.crusaders.demodesafio.aluno.entities.Aluno;
-import com.crusaders.demodesafio.aluno.services.AlunoService;
+
+import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
+import com.crusaders.demodesafio.alunoematricula.services.AlunoService;
 import com.crusaders.demodesafio.alunoematricula.entities.Matricula;
 import com.crusaders.demodesafio.alunoematricula.services.MatriculaService;
 import com.crusaders.demodesafio.alunoematricula.web.dto.MatriculaRequestDto;
 import com.crusaders.demodesafio.alunoematricula.web.dto.MatriculaResponseDto;
+import com.crusaders.demodesafio.alunoematricula.web.dto.mapper.AlunoMapper;
 import com.crusaders.demodesafio.curso.entidade.Curso;
 import com.crusaders.demodesafio.curso.service.CursoService;
 import com.crusaders.demodesafio.curso.web.dto.mapper.CursoMapper;
@@ -53,10 +55,4 @@ public class MatriculaController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
-
-
 }
-
-
-
-
