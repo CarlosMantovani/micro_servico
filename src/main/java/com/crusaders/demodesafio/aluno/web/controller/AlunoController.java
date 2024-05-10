@@ -2,9 +2,9 @@ package com.crusaders.demodesafio.aluno.web.controller;
 
 import com.crusaders.demodesafio.aluno.entities.Aluno;
 import com.crusaders.demodesafio.aluno.services.AlunoService;
-import com.crusaders.demodesafio.curso.entidade.Curso;
+import com.crusaders.demodesafio.aluno.web.dto.AlunoResponseDto;
+import com.crusaders.demodesafio.aluno.web.dto.mapper.AlunoMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +26,16 @@ public class AlunoController {
     public ResponseEntity<Iterable<Aluno>> listarAlunos() {
         Iterable<Aluno> alunos = alunoService.listarAlunos();
         return new ResponseEntity<>(alunos, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AlunoResponseDto> getById(@PathVariable Long id) {
+        Aluno aluno = alunoService.buscarPorId(id);
+        return ResponseEntity.ok(AlunoMapper.toDto(aluno));
+    }
+    @PatchMapping("/{id}/aluno")
+    public ResponseEntity<AlunoResponseDto> alterarStatusAluno(@PathVariable Long id, @RequestBody AlunoResponseDto alunoResponseDto) {
+        Aluno aluno = alunoService.alterarStatusAluno(id, alunoResponseDto.getStatus());
+        return ResponseEntity.ok(AlunoMapper.toDto(aluno));
     }
 }
