@@ -34,7 +34,7 @@ public class AlunoController {
         return ResponseEntity.ok(AlunoMapper.toDto(aluno));
     }
 
-    @PatchMapping("/{id}/aluno")
+    @PatchMapping("/{id}/status")
     public ResponseEntity<AlunoResponseDto> alterarStatusAluno(@PathVariable Long id, @RequestBody AlunoResponseDto alunoResponseDto) {
         Aluno aluno = alunoService.alterarStatusAluno(id, alunoResponseDto.getStatus());
         return ResponseEntity.ok(AlunoMapper.toDto(aluno));

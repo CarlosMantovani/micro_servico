@@ -28,11 +28,9 @@ public class AlunoService {
                 () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
         );
     }
-
     public Aluno alterarStatusAluno(Long id, Status status) {
         Aluno aluno = buscarPorId(id);
         aluno.setStatus(status);
         return alunoRepository.save(aluno);
     }
-
 }
