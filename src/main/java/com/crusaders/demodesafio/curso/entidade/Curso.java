@@ -47,4 +47,8 @@ public class Curso implements Serializable {
     public String toString() {
         return "Curso{" + "id=" + id + ", nome='" + nome + '\'' + '}';
     }
+
+    public boolean isAtivo() {
+        return status == Status.ATIVO;
+    }
 }
