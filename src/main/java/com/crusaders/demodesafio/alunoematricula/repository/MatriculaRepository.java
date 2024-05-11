@@ -1,7 +1,6 @@
 package com.crusaders.demodesafio.alunoematricula.repository;
 
 import com.crusaders.demodesafio.Enum.Status;
-import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
 import com.crusaders.demodesafio.alunoematricula.entities.Matricula;
 import com.crusaders.demodesafio.curso.entidade.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
