@@ -2,7 +2,9 @@ package com.crusaders.demodesafio.curso.service;
 
 import com.crusaders.demodesafio.Enum.Status;
 import com.crusaders.demodesafio.curso.entidade.Curso;
+import com.crusaders.demodesafio.curso.exception.CursoIdNaoEncontrado;
 import com.crusaders.demodesafio.curso.repository.CursoRepository;
+import com.crusaders.demodesafio.curso.exception.CursoIdDuplicadoException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,11 @@ import java.util.List;
 public class CursoService {
     @Autowired
     private CursoRepository cursoRepository;
-
+    @Transactional
     public Curso cadastrarCurso(Curso curso) {
+        if (cursoRepository.existsById(curso.getId())) {
+            throw new CursoIdDuplicadoException("Já existe um curso cadastrado com o ID " + curso.getId());
+        }
         return cursoRepository.save(curso);
     }
     @Transactional
@@ -26,7 +31,7 @@ public class CursoService {
 
     public Curso buscarPorId(Long id) {
         return cursoRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
+                () -> new CursoIdNaoEncontrado(String.format("Curso id=%s não encontrado", id))
         );
     }
     public Curso alterarStatusCurso(Long id, Status status) {

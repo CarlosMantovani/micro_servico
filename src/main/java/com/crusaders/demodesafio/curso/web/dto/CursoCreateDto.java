@@ -1,5 +1,6 @@
 package com.crusaders.demodesafio.curso.web.dto;
 
+import com.crusaders.demodesafio.Enum.Status;
 import lombok.*;
 
 @Getter
@@ -16,4 +17,6 @@ public class CursoCreateDto {
     private String areaConhecimento;
     @NonNull
     private String professor;
+
+
 }
