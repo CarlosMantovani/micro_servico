@@ -4,6 +4,7 @@ import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
 import com.crusaders.demodesafio.alunoematricula.services.AlunoService;
 import com.crusaders.demodesafio.alunoematricula.web.dto.AlunoCreateDto;
 import com.crusaders.demodesafio.alunoematricula.web.dto.AlunoResponseDto;
+import com.crusaders.demodesafio.alunoematricula.web.dto.AlunoStatusDto;
 import com.crusaders.demodesafio.alunoematricula.web.dto.mapper.AlunoMapper;
 import com.crusaders.demodesafio.curso.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,7 +46,7 @@ public class AlunoController {
     }
     @Operation(summary = "Busca por aluno", description = "Recurso para busca por aluno",
             responses = {
-                    @ApiResponse(responseCode = "204",description = "Aluno encotrado com sucesso", content = @Content(mediaType =
+                    @ApiResponse(responseCode = "200",description = "Aluno encotrado com sucesso", content = @Content(mediaType =
                             "application/json", schema =@Schema(implementation = AlunoResponseDto.class))),
                     @ApiResponse(responseCode = "404", description = "Id do curso não encontrado",content =
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
@@ -57,14 +58,14 @@ public class AlunoController {
     }
     @Operation(summary = "Alterar o status do aluno", description = "Recurso para alterar o status do aluno",
             responses = {
-                    @ApiResponse(responseCode = "204",description = "Aluno alterado com sucesso", content = @Content(mediaType =
-                            "application/json", schema =@Schema(implementation = AlunoResponseDto.class))),
+                    @ApiResponse(responseCode = "200",description = "Aluno alterado com sucesso", content = @Content(mediaType =
+                            "application/json", schema =@Schema(implementation = AlunoStatusDto.class))),
                     @ApiResponse(responseCode = "404", description = "Id do curso não encontrado",content =
                     @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
             })
     @PatchMapping("/{id}/status")
-    public ResponseEntity<AlunoResponseDto> alterarStatusAluno(@PathVariable Long id, @RequestBody AlunoResponseDto alunoResponseDto) {
-        Aluno aluno = alunoService.alterarStatusAluno(id, alunoResponseDto.getStatus());
+    public ResponseEntity<AlunoResponseDto> alterarStatusAluno(@PathVariable Long id, @RequestBody AlunoStatusDto alunoStatusDto) {
+        Aluno aluno = alunoService.alterarStatusAluno(id, alunoStatusDto.getStatus());
         return ResponseEntity.ok(AlunoMapper.toDto(aluno));
     }
 }
