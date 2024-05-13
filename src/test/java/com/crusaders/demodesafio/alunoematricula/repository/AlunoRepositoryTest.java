@@ -16,14 +16,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AlunoRepositoryTest {
 
     @Autowired
-    AlunoRepository alunoRepository;
+    private AlunoRepository alunoRepository;
 
     @Autowired
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Test
-    @DisplayName("Deve retornar true se o CPF existir no BD")
-    void alunoExisteCaso1() {
+    @DisplayName("Deve retornar true se o CPF existir no banco de dados")
+    void existsByCpfCaso1_DeveRetornarTrueSeCpfExistirNoBD() {
         Aluno aluno = new Aluno();
         aluno.setNome("Maria");
         aluno.setCpf("96199911091");
@@ -37,8 +37,8 @@ class AlunoRepositoryTest {
     }
 
     @Test
-    @DisplayName("Deve retornar false se o CPF não existir no BD")
-    void alunoExisteCaso2() {
+    @DisplayName("Deve retornar false se o CPF não existir no banco de dados")
+    void existsByCpfCaso2_DeveRetornarFalseSeCpfNaoExistirNoBD() {
         boolean result = this.alunoRepository.existsByCpf("CPF_QUE_NAO_EXISTE");
         assertThat(result).isFalse();
     }
