@@ -22,7 +22,6 @@ public class AlunoService {
     public Iterable<Aluno> listarAlunos() {
         return alunoRepository.findAll();
     }
-
     public Aluno buscarPorId(Long id) {
         return alunoRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
@@ -34,3 +33,4 @@ public class AlunoService {
         return alunoRepository.save(aluno);
     }
 }
+
