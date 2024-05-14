@@ -2,8 +2,8 @@ package com.crusaders.demodesafio.alunoematricula.services;
 
 import com.crusaders.demodesafio.Enum.Status;
 import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
+import com.crusaders.demodesafio.alunoematricula.exception.IdAlunoNaoEncontradoException;
 import com.crusaders.demodesafio.alunoematricula.repository.AlunoRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class AlunoService {
     }
     public Aluno buscarPorId(Long id) {
         return alunoRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
+                () -> new IdAlunoNaoEncontradoException(String.format("Usuário id=%s não encontrado", id))
         );
     }
     public Aluno alterarStatusAluno(Long id, Status status) {
