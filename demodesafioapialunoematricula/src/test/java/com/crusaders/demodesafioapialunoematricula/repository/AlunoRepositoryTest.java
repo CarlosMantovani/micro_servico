@@ -1,7 +1,8 @@
-package com.crusaders.demodesafio.alunoematricula.repository;
+package com.crusaders.demodesafioapialunoematricula.repository;
 
-import com.crusaders.demodesafio.Enum.Status;
-import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
+import com.crusaders.Enum.Status;
+import com.crusaders.entities.Aluno;
+import com.crusaders.repository.AlunoRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

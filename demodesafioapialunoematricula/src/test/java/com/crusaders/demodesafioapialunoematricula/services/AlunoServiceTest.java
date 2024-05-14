@@ -1,8 +1,9 @@
-package com.crusaders.demodesafio.alunoematricula.services;
+package com.crusaders.demodesafioapialunoematricula.services;
 
-import com.crusaders.demodesafio.Enum.Status;
-import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
-import com.crusaders.demodesafio.alunoematricula.repository.AlunoRepository;
+import com.crusaders.Enum.Status;
+import com.crusaders.entities.Aluno;
+import com.crusaders.repository.AlunoRepository;
+import com.crusaders.services.AlunoService;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

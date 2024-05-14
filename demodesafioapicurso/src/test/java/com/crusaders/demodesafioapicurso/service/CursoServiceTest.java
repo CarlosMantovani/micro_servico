@@ -1,6 +1,6 @@
-package com.crusaders.demodesafio.curso.service;
+package com.crusaders.demodesafioapicurso.service;
 
-import com.crusaders.demodesafio.curso.repository.CursoRepository;
+import com.crusaders.repository.CursoRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

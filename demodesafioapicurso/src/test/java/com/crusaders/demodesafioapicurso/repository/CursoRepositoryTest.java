@@ -1,7 +1,8 @@
-package com.crusaders.demodesafio.curso.repository;
+package com.crusaders.demodesafioapicurso.repository;
 
 import com.crusaders.demodesafio.Enum.Status;
-import com.crusaders.demodesafio.curso.entidade.Curso;
+import com.crusaders.entidade.Curso;
+import com.crusaders.repository.CursoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
