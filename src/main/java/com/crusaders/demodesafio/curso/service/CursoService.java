@@ -19,9 +19,6 @@ public class CursoService {
     private CursoRepository cursoRepository;
     @Transactional
     public Curso cadastrarCurso(Curso curso) {
-        if (cursoRepository.existsById(curso.getId())) {
-            throw new CursoIdDuplicadoException("Já existe um curso cadastrado com o ID " + curso.getId());
-        }
         return cursoRepository.save(curso);
     }
     @Transactional
