@@ -1,6 +1,6 @@
 package com.crusaders.web.exception;
 
-import com.crusaders.demodesafioalunoematricula.exception.*;
+import com.crusaders.exception.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
 @RestControllerAdvice
-public class ApiExceptionHandler1 {
+public class ApiExceptionHandler {
 
     @ExceptionHandler(IdAlunoNaoEncontradoException.class)
     public ResponseEntity<ErrorMessage> IdAlunoNaoEncontrado(RuntimeException ex,
-                                                                  HttpServletRequest request
+                                                             HttpServletRequest request
     ) {
         log.error("Api Error - ", ex);
         return ResponseEntity
@@ -27,7 +27,7 @@ public class ApiExceptionHandler1 {
 
     @ExceptionHandler(MatriculaIdNaoEncontradoException.class)
     public ResponseEntity<ErrorMessage> MatriculaIdNaoEncontradoException(RuntimeException ex,
-                                                                HttpServletRequest request
+                                                                          HttpServletRequest request
     ) {
         log.error("Api Error - ", ex);
         return ResponseEntity
@@ -37,7 +37,7 @@ public class ApiExceptionHandler1 {
     }
     @ExceptionHandler(MatriculaIdDuplicadoException.class)
     public ResponseEntity<ErrorMessage> MatriculaIdDuplicadoException(RuntimeException ex,
-                                                                  HttpServletRequest request
+                                                                      HttpServletRequest request
     ) {
         log.error("Api Error - ", ex);
         return ResponseEntity
@@ -47,7 +47,7 @@ public class ApiExceptionHandler1 {
     }
     @ExceptionHandler(NumeroMaximoException.class)
     public ResponseEntity<ErrorMessage> NumeroMaximoException(RuntimeException ex,
-                                                                  HttpServletRequest request
+                                                              HttpServletRequest request
     ) {
         log.error("Api Error - ", ex);
         return ResponseEntity
@@ -57,5 +57,3 @@ public class ApiExceptionHandler1 {
     }
 
 }
-
-

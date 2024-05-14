@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.alunoematricula.web.controller;
+package com.crusaders.web.controller;
 
 import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
 import com.crusaders.demodesafio.alunoematricula.services.AlunoService;

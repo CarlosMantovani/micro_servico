@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.alunoematricula.services;
+package com.crusaders.services;
 
 import com.crusaders.demodesafio.Enum.Status;
 import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
