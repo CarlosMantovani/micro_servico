@@ -1,7 +1,7 @@
 package com.crusaders.demodesafio.alunoematricula.web.exception;
 
 import com.crusaders.demodesafio.alunoematricula.exception.AlunoIdDuplicadoException;
-import com.crusaders.demodesafio.alunoematricula.exception.IdAlunoNaoEncontrado;
+import com.crusaders.demodesafio.alunoematricula.exception.IdAlunoNaoEncontradoException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ApiExceptionHandler1 {
 
-    @ExceptionHandler(IdAlunoNaoEncontrado.class)
+    @ExceptionHandler(IdAlunoNaoEncontradoException.class)
     public ResponseEntity<ErrorMessage> IdAlunoNaoEncontrado(RuntimeException ex,
                                                                   HttpServletRequest request
     ) {
