@@ -1,8 +1,6 @@
 package com.crusaders.demodesafio.alunoematricula.web.exception;
 
-import com.crusaders.demodesafio.alunoematricula.exception.AlunoIdDuplicadoException;
-import com.crusaders.demodesafio.alunoematricula.exception.IdAlunoNaoEncontradoException;
-import jakarta.persistence.EntityNotFoundException;
+import com.crusaders.demodesafio.alunoematricula.exception.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,14 +19,14 @@ public class ApiExceptionHandler1 {
     ) {
         log.error("Api Error - ", ex);
         return ResponseEntity
-                .status(HttpStatus.NOT_ACCEPTABLE)
+                .status(HttpStatus.NOT_FOUND)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.NOT_ACCEPTABLE, ex.getMessage()));
+                .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
     }
 
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorMessage> EntityNotFoundException(RuntimeException ex,
+    @ExceptionHandler(MatriculaIdNaoEncontradoException.class)
+    public ResponseEntity<ErrorMessage> MatriculaIdNaoEncontradoException(RuntimeException ex,
                                                                 HttpServletRequest request
     ) {
         log.error("Api Error - ", ex);
@@ -37,8 +35,8 @@ public class ApiExceptionHandler1 {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
     }
-    @ExceptionHandler(AlunoIdDuplicadoException.class)
-    public ResponseEntity<ErrorMessage> AlunoIdDuplicadoException(RuntimeException ex,
+    @ExceptionHandler(MatriculaIdDuplicadoException.class)
+    public ResponseEntity<ErrorMessage> MatriculaIdDuplicadoException(RuntimeException ex,
                                                                   HttpServletRequest request
     ) {
         log.error("Api Error - ", ex);
@@ -47,6 +45,17 @@ public class ApiExceptionHandler1 {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(new ErrorMessage(request, HttpStatus.CONFLICT, ex.getMessage()));
     }
+    @ExceptionHandler(NumeroMaximoException.class)
+    public ResponseEntity<ErrorMessage> NumeroMaximoException(RuntimeException ex,
+                                                                  HttpServletRequest request
+    ) {
+        log.error("Api Error - ", ex);
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(new ErrorMessage(request, HttpStatus.CONFLICT, ex.getMessage()));
+    }
+
 }
 
 
