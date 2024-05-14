@@ -13,8 +13,8 @@ public class SpringDocOpenApiConfig {
     public OpenAPI openAPI(){
         return new OpenAPI().info(
                 new Info()
-                        .title("REST API - Micro Seviço Gestão De Cursos")
-                        .description("API Para Gerenciamento De Cursos")
+                        .title("REST API - Micro Seviço Gestão De Matricula E Alunos")
+                        .description("API Para Gerenciamento De Matricula E Alunos")
                         .version("V1")
                         .license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0"))
                         .contact(new Contact().name("Squad Code Crusarders - Compass UOL")));
