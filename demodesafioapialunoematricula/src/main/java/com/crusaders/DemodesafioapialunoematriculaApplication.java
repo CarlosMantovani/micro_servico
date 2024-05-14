@@ -6,6 +6,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableJpaRepositories
+@ComponentScan
 public class DemodesafioapialunoematriculaApplication {
 
 	public static void main(String[] args) {
