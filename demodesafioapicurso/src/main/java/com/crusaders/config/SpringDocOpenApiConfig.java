@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.config;
+package com.crusaders.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;

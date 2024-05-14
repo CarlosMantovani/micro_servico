@@ -35,7 +35,13 @@ public class CursoController {
         Curso cursoCadastrado = cursoService.cadastrarCurso(curso);
         return ResponseEntity.status(HttpStatus.CREATED).body(cursoCadastrado);
     }
-
+    @Operation(summary = "Buscar curso", description = "Recurso para encontrar um curso",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Recurso encontrado", content = @Content(mediaType =
+                            "application/json", schema =@Schema(implementation = CursoResponseDto.class))),
+                    @ApiResponse(responseCode = "404", description = "ID do curso não encontrado",content =
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+            })
     @GetMapping("/{id}")
     public ResponseEntity<CursoResponseDto> getById(@PathVariable Long id) {
         Curso curso = cursoService.buscarPorId(id);
