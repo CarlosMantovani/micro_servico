@@ -3,10 +3,12 @@ package com.crusaders.demodesafio.alunoematricula.services;
 import com.crusaders.demodesafio.Enum.Status;
 import com.crusaders.demodesafio.alunoematricula.entities.Aluno;
 import com.crusaders.demodesafio.alunoematricula.entities.Matricula;
+import com.crusaders.demodesafio.alunoematricula.exception.IdAlunoNaoEncontradoException;
+import com.crusaders.demodesafio.alunoematricula.exception.MatriculaIdDuplicadoException;
+import com.crusaders.demodesafio.alunoematricula.exception.NumeroMaximoException;
 import com.crusaders.demodesafio.alunoematricula.repository.MatriculaRepository;
 import com.crusaders.demodesafio.alunoematricula.web.dto.MatriculaAlunoDto;
 import com.crusaders.demodesafio.curso.entidade.Curso;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +44,7 @@ public class MatriculaService {
     }
     public Matricula buscarPorId(Long id) {
         return matriculaRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
+                () -> new IdAlunoNaoEncontradoException(String.format("Usuário id=%s não encontrado", id))
         );
     }
     @Transactional(readOnly = true)
@@ -57,11 +59,11 @@ public class MatriculaService {
     public boolean matricularAluno(Curso curso, Aluno aluno) {
         List<Matricula> matriculas = matriculaRepository.findByCurso(curso);
         if (matriculas.size() >= 10) {
-            return false;
+            throw new NumeroMaximoException("Número máximo de matrículas atingido para este curso");
         }
 
         if (matriculas.stream().anyMatch(matricula -> matricula.getAluno().equals(aluno))) {
-            return false;
+            throw new MatriculaIdDuplicadoException("Aluno já matriculado neste curso");
         }
 
         Matricula matricula = new Matricula();
@@ -69,7 +71,6 @@ public class MatriculaService {
         matricula.setAluno(aluno);
         matricula.setStatus(Status.ATIVO);
         matriculaRepository.save(matricula);
-
         return true;
     }
 
@@ -89,7 +90,7 @@ public class MatriculaService {
     public List<MatriculaAlunoDto> listarMatriculasPorAluno(Long alunoId) {
         Aluno aluno = alunoService.buscarPorId(alunoId);
         if (aluno == null) {
-            throw new RuntimeException("Aluno não encontrado");
+            throw new IdAlunoNaoEncontradoException("Aluno não encontrado");
         }
 
         return findByAluno(aluno);
