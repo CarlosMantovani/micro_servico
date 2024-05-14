@@ -26,9 +26,6 @@ class CursoServiceTest {
     @Autowired
     CursoRepository cursoRepository;
 
-    @Autowired
-    EntityManager entityManager;
-
     private CursoService cursoService;
 
     @BeforeEach
