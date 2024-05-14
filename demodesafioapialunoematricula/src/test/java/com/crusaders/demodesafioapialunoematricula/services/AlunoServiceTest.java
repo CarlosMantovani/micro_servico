@@ -47,7 +47,7 @@ class AlunoServiceTest {
         aluno.setId(2L);
         aluno.setNome("Maria");
         aluno.setCpf("12345678901");
-        aluno.setDataNascimento("01/01/2000");
+        aluno.setDataNascimento("02/02/2002");
         aluno.setSexo("Feminino");
         aluno.setStatus(Status.ATIVO);
 
