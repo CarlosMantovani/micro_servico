@@ -48,8 +48,10 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "Aluno{" +
-                "id=" + id +
-                '}';
+        return "Aluno{" + "id=" + id + '}';
+    }
+
+    public boolean isAtivo() {
+        return status == Status.ATIVO;
     }
 }
