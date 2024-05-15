@@ -85,4 +85,9 @@ public class MatriculaController {
         MatriculaAlunoDto matriculaAlunoDto = matriculaService.buscarPorId(id);
         return ResponseEntity.ok(matriculaAlunoDto);
     }
+    @PatchMapping("/{idMatricula}/status")
+    public ResponseEntity<MatriculaAlunoDto> alterarStatusMatricula(@PathVariable Long idMatricula, @RequestBody MatriculaStatusDto matriculaStatusDto) {
+        MatriculaAlunoDto matriculaAlunoDto = matriculaService.alterarStatus(idMatricula, matriculaStatusDto.getStatus());
+        return ResponseEntity.ok(matriculaAlunoDto);
+    }
 }

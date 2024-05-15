@@ -6,9 +6,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MatriculaAlunoDto {
-    private Long id;
-    private String nomeAluno;
-    private String nomeCurso;
+public class MatriculaStatusDto {
     private Status status;
 }
