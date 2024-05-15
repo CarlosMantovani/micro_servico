@@ -1,6 +1,9 @@
 package com.crusaders.web.dto;
-import com.crusaders.demodesafio.Enum.Status;
-import lombok.*;
+
+import com.crusaders.Enum.Status;
+import lombok.Getter;
+import lombok.Setter;
+
 @Getter
 @Setter
 public class CursoStatusDto {

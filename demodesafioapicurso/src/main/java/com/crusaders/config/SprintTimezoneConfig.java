@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.config;
+package com.crusaders.config;
 
 import jakarta.annotation.PostConstruct;
 

@@ -1,6 +1,6 @@
 package com.crusaders.entidade;
 
-import com.crusaders.demodesafio.Enum.Status;
+import com.crusaders.Enum.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
@@ -45,5 +45,9 @@ public class Curso implements Serializable {
     @Override
     public String toString() {
         return "Curso{" + "id=" + id + ", nome='" + nome + '\'' + '}';
+    }
+
+    public boolean isAtivo() {
+        return status == Status.ATIVO;
     }
 }
