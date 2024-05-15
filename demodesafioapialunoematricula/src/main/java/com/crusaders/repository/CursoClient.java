@@ -13,18 +13,6 @@ import java.util.List;
 @FeignClient(name = "curso-service", url = "http://localhost:8081/api/v1")
 public interface CursoClient {
 
-    @PostMapping("/cursos")
-    void cadastrarCurso(@RequestBody CursoRequestDto curso);
-
-    @PutMapping("/cursos/{id}/status")
-    void alterarStatus(@PathVariable("id") Long id);
-
-    @PutMapping("/cursos/{id}/professor")
-    void editarProfessor(@PathVariable("id") Long id, @RequestParam("novoProfessor") String novoProfessor);
-
-    @GetMapping("/cursos/{id}/alunos")
-    List<AlunoResponseDto> consultarAlunosMatriculados(@PathVariable("id") Long id);
-
     @GetMapping("/cursos/{id}")
     CursoRequestDto buscarPorId(@PathVariable("id") Long id);
 }

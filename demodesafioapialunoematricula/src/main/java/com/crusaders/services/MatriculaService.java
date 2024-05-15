@@ -34,6 +34,7 @@ public class MatriculaService {
                     CursoRequestDto curso = cursoClient.buscarPorId(matricula.getCursoId());
                     matriculaAlunoDto.setNomeCurso(curso.getNome());
                     matriculaAlunoDto.setNomeAluno(matricula.getAluno().getNome());
+                    matriculaAlunoDto.setStatus(matricula.getStatus());
                     return matriculaAlunoDto;
                 })
                 .collect(Collectors.toList());
@@ -43,7 +44,6 @@ public class MatriculaService {
     public Matricula save(Matricula matricula) {
         return matriculaRepository.save(matricula);
     }
-
     public MatriculaAlunoDto buscarPorId(Long id) {
         Matricula matricula = matriculaRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Matricula id=%s não encontrada", id)));
@@ -54,26 +54,19 @@ public class MatriculaService {
         matriculaAlunoDto.setId(matricula.getId());
         matriculaAlunoDto.setNomeAluno(matricula.getAluno().getNome());
         matriculaAlunoDto.setNomeCurso(curso.getNome());
+        matriculaAlunoDto.setStatus(matricula.getStatus());
 
         return matriculaAlunoDto;
     }
-
-    @Transactional(readOnly = true)
-    public long countByCursoAndStatus(CursoRequestDto curso, Status status) {
-        return matriculaRepository.countByCursoIdAndStatus(curso.getId(), status);
-    }
-
-    @Transactional(readOnly = true)
-    public List<Matricula> findByCurso(CursoRequestDto curso) {
-        return matriculaRepository.findByCursoId(curso.getId());
-    }
-
     @Transactional
     public boolean matricularAluno(Long cursoId, Long idAluno) {
         CursoRequestDto curso = cursoClient.buscarPorId(cursoId);
         Aluno aluno = alunoService.buscarPorId(idAluno);
         if (curso == null) {
             throw new RuntimeException("Curso não encontrado");
+        }
+        if (curso.getStatus().toString().equals("INATIVO")){
+            throw new RuntimeException("Curso Inativo");
         }
 
         List<Matricula> matriculas = matriculaRepository.findByCursoId(cursoId);
@@ -93,26 +86,34 @@ public class MatriculaService {
 
         return true;
     }
-
     public List<Aluno> listarAlunosMatriculados(CursoRequestDto curso) {
         List<Matricula> matriculas = matriculaRepository.findByCursoId(curso.getId());
         return matriculas.stream().map(Matricula::getAluno).collect(Collectors.toList());
     }
+    @Transactional
+    public MatriculaAlunoDto alterarStatus(Long matriculaId, Status status) {
+        Matricula matricula = matriculaRepository.findById(matriculaId)
+                .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
 
-    public void inativarMatriculasPorAluno(Aluno aluno) {
-        List<Matricula> matriculas = matriculaRepository.findByAluno(aluno);
-        for (Matricula matricula : matriculas) {
-            matricula.setStatus(Status.INATIVO);
-            save(matricula);
-        }
+        matricula.setStatus(status);
+        matriculaRepository.save(matricula);
+
+        Aluno aluno = alunoService.buscarPorId(matricula.getAluno().getId());
+        CursoRequestDto curso = cursoClient.buscarPorId(matricula.getCursoId());
+
+        MatriculaAlunoDto matriculaAlunoDto = new MatriculaAlunoDto();
+        matriculaAlunoDto.setId(matricula.getId());
+        matriculaAlunoDto.setNomeAluno(aluno.getNome());
+        matriculaAlunoDto.setNomeCurso(curso.getNome());
+        matriculaAlunoDto.setStatus(matricula.getStatus());
+
+        return matriculaAlunoDto;
     }
-
     public List<MatriculaAlunoDto> listarMatriculasPorAluno(Long alunoId) {
         Aluno aluno = alunoService.buscarPorId(alunoId);
         if (aluno == null) {
             throw new RuntimeException("Aluno não encontrado");
         }
-
         return findByAluno(aluno);
     }
 }

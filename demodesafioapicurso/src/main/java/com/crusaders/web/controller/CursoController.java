@@ -2,6 +2,7 @@ package com.crusaders.web.controller;
 
 import com.crusaders.entidade.Curso;
 import com.crusaders.service.CursoService;
+import com.crusaders.web.dto.CursoCreateDto;
 import com.crusaders.web.dto.CursoProfessorDto;
 import com.crusaders.web.dto.CursoResponseDto;
 import com.crusaders.web.dto.CursoStatusDto;
@@ -70,5 +71,15 @@ public class CursoController {
     public ResponseEntity<Void> editarProfessor(@PathVariable Long id, @RequestBody CursoProfessorDto cursoProfessorDto) {
         Curso curso = cursoService.editarProfessor(id, cursoProfessorDto.getNomeProfessor());
         return ResponseEntity.noContent().build();
+    }
+    @Operation(summary = "Listar todos os cursos", description = "Recurso para listar todos os alunos",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "OK", content = @Content(mediaType =
+                            "application/json", schema =@Schema(implementation = CursoCreateDto.class))),
+            })
+    @GetMapping
+    public ResponseEntity<Iterable<Curso>> listarCursos() {
+        Iterable<Curso> cursos = cursoService.listarCursos();
+        return new ResponseEntity<>(cursos, HttpStatus.OK);
     }
 }
