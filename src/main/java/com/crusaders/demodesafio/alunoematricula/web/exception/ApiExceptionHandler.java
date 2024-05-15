@@ -1,6 +1,5 @@
 package com.crusaders.demodesafio.alunoematricula.web.exception;
 
-import com.crusaders.web.exception.ErrorMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
