@@ -1,6 +1,6 @@
 package com.crusaders.demodesafioapicurso.repository;
 
-import com.crusaders.demodesafio.Enum.Status;
+import com.crusaders.Enum.Status;
 import com.crusaders.entidade.Curso;
 import com.crusaders.repository.CursoRepository;
 import org.junit.jupiter.api.DisplayName;

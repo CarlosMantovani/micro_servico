@@ -1,6 +1,6 @@
 package com.crusaders.entidade;
 
-import com.crusaders.demodesafio.Enum.Status;
+import com.crusaders.Enum.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;

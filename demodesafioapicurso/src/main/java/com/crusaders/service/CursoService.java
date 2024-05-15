@@ -1,6 +1,6 @@
 package com.crusaders.service;
 
-import com.crusaders.demodesafio.Enum.Status;
+import com.crusaders.Enum.Status;
 import com.crusaders.entidade.Curso;
 import com.crusaders.exception.CursoIdNaoEncontrado;
 import com.crusaders.repository.CursoRepository;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 @Service
 public class CursoService {
