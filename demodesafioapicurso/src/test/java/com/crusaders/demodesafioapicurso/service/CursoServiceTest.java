@@ -1,10 +1,10 @@
 package com.crusaders.demodesafioapicurso.service;
 
-import com.crusaders.demodesafio.Enum.Status;
+import com.crusaders.Enum.Status;
 import com.crusaders.entidade.Curso;
+import com.crusaders.exception.CursoIdNaoEncontrado;
 import com.crusaders.repository.CursoRepository;
 import com.crusaders.service.CursoService;
-import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @DataJpaTest
@@ -96,6 +97,14 @@ class CursoServiceTest {
     }
 
     @Test
+    @DisplayName("Teste para buscar por id quando o curso não existe")
+    void buscarPorId_CursoNaoEncontrado() {
+        Long idInexistente = 0L;
+        assertThatThrownBy(() -> cursoService.buscarPorId(idInexistente))
+                .isInstanceOf(CursoIdNaoEncontrado.class);
+    }
+
+    @Test
     @DisplayName("Teste para alterar status do curso")
     void alterarStatusCurso() {
         Curso curso = criarCurso("Curso 1", "100", "Hermes", "Cieências Humanas");
@@ -121,5 +130,15 @@ class CursoServiceTest {
         assertThat(cursoEditado).isNotNull();
         assertThat(cursoEditado.getId()).isEqualTo(cursoSalvo.getId());
         assertThat(cursoEditado.getProfessor()).isEqualTo(novoProfessor);
+    }
+
+    @Test
+    @DisplayName("Teste para editar professor do curso quando o curso não existe")
+    void editarProfessor_CursoNaoEncontrado() {
+        Long idInexistente = 0L;
+        String novoProfessor = "Novo Professor";
+
+        assertThatThrownBy(() -> cursoService.editarProfessor(idInexistente, novoProfessor))
+                .isInstanceOf(CursoIdNaoEncontrado.class);
     }
 }
