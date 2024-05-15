@@ -30,10 +30,10 @@ class CursoRepositoryTest {
         curso.setAreaConhecimento("Técnico");
         curso.setStatus(Status.ATIVO);
 
-        Curso savedCurso = cursoRepository.save(curso);
+        Curso cursoSalvo = cursoRepository.save(curso);
 
-        assertThat(savedCurso).isNotNull();
-        assertThat(savedCurso.getId()).isNotNull();
+        assertThat(cursoSalvo).isNotNull();
+        assertThat(cursoSalvo.getId()).isNotNull();
     }
 
     @Test
@@ -46,12 +46,12 @@ class CursoRepositoryTest {
         curso.setAreaConhecimento("Técnico");
         curso.setStatus(Status.ATIVO);
 
-        Curso savedCurso = cursoRepository.save(curso);
+        Curso cursoSalvo = cursoRepository.save(curso);
 
-        Curso foundCurso = cursoRepository.findById(savedCurso.getId()).orElse(null);
+        Curso encontrarCurso = cursoRepository.findById(cursoSalvo.getId()).orElse(null);
 
-        assertThat(foundCurso).isNotNull();
-        assertThat(foundCurso.getId()).isEqualTo(savedCurso.getId());
+        assertThat(encontrarCurso).isNotNull();
+        assertThat(encontrarCurso.getId()).isEqualTo(cursoSalvo.getId());
     }
 
     @Test
@@ -64,14 +64,14 @@ class CursoRepositoryTest {
         curso.setAreaConhecimento("Técnico");
         curso.setStatus(Status.ATIVO);
 
-        Curso savedCurso = cursoRepository.save(curso);
+        Curso cursoSalvo = cursoRepository.save(curso);
 
-        savedCurso.setProfessor("Matheus");
+        cursoSalvo.setProfessor("Matheus");
 
-        Curso updatedCurso = cursoRepository.save(savedCurso);
+        Curso cursoAtualizado = cursoRepository.save(cursoSalvo);
 
-        assertThat(updatedCurso).isNotNull();
-        assertThat(updatedCurso.getProfessor()).isEqualTo("Matheus");
+        assertThat(cursoAtualizado).isNotNull();
+        assertThat(cursoAtualizado.getProfessor()).isEqualTo("Matheus");
     }
 
     @Test
@@ -84,10 +84,10 @@ class CursoRepositoryTest {
         curso.setAreaConhecimento("Técnico");
         curso.setStatus(Status.ATIVO);
 
-        Curso savedCurso = cursoRepository.save(curso);
+        Curso cursoSalvo = cursoRepository.save(curso);
 
-        cursoRepository.delete(savedCurso);
+        cursoRepository.delete(cursoSalvo);
 
-        assertThat(cursoRepository.findById(savedCurso.getId())).isEmpty();
+        assertThat(cursoRepository.findById(cursoSalvo.getId())).isEmpty();
     }
 }
