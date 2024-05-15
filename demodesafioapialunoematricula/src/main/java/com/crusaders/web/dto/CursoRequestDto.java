@@ -1,5 +1,6 @@
 package com.crusaders.web.dto;
 
+import com.crusaders.Enum.Status;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -19,4 +20,6 @@ public class CursoRequestDto {
     private String areaConhecimento;
     @NonNull
     private String professor;
+    @NonNull
+    private Status status;
 }
