@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.exception;
+package com.crusaders.demodesafio.alunoematricula.web.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

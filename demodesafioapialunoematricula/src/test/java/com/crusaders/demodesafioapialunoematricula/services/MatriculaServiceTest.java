@@ -1,4 +1,4 @@
-package com.crusaders.demodesafio.alunoematricula.services;
+package com.crusaders.demodesafioapialunoematricula.services;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

@@ -1,5 +1,6 @@
-package com.crusaders.demodesafio.exception;
+package com.crusaders.demodesafio.alunoematricula.web.exception;
 
+import com.crusaders.web.exception.ErrorMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
